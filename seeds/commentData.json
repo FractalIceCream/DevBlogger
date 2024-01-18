@@ -1,0 +1,32 @@
+[
+    {
+        "text": "A mobile app that sucks!",
+        "user_id": 2,
+        "blog_id": 1
+    },
+    {
+        "text": "A mobile app rules!",
+        "user_id": 3,
+        "blog_id": 1
+    },
+    {
+        "text": "A web app that steal you info!",
+        "user_id": 3,
+        "blog_id": 2
+    },
+    {
+        "text": "A web app gives money!",
+        "user_id": 1,
+        "blog_id": 2
+    },
+    {
+        "text": "A game for Windows and macOS where its pay-to-win",
+        "user_id": 1,
+        "blog_id": 3
+    },
+    {
+        "text": "A game has hackers",
+        "user_id": 2,
+        "blog_id": 3
+    }
+]
