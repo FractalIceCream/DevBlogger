@@ -41,6 +41,29 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.put('/', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.update(
+      {
+        title: req.body.title,
+        description: req.body.description,
+      },
+      {where: {
+        id: req.body.id,
+        user_id: req.session.user_id
+      }}
+    );
+    if (!blogData) {
+      res.status(404).json({message: 'post update could not be achieved!'});
+      return;
+    }
+    res.status(200).json({message: 'post updated'});
+
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
+
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
@@ -55,7 +78,7 @@ router.delete('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(blogData);
+    res.status(200).json({message: 'deleted post'});
   } catch (err) {
     res.status(500).json(err);
   }

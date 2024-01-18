@@ -21,17 +21,16 @@ const newBlogFormHandler = async (event) => {
 };
 const updateBlogFormHandler = async (event) => {
   event.preventDefault();
+  const id = event.target.getAttribute('data-blogId');
   const postEl = event.target.parentElement.parentElement;
-console.log(postEl);
   const title = postEl.children[0].children[0].querySelector('.post-title').value.trim();
-console.log(title);
   const description = postEl.querySelector('.post-description').value.trim();
   
   if (title && description) {
     console.log('updated blog post');
     const response = await fetch('/api/blog', {
-      method: 'UPDATE',
-      body: JSON.stringify({title, description}),
+      method: 'PUT',
+      body: JSON.stringify({id, title, description}),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
@@ -45,7 +44,15 @@ console.log(title);
 
 const deleteBlogFormHandler = async (event) => {
   event.preventDefault();
-  
+  const id = event.target.getAttribute('data-blogId');
+  const response = await fetch(`/api/blog/${id}`, {
+    method: 'DELETE'
+  });
+  if (response.ok) {
+    document.location.replace('/dashboard');
+  } else {
+    alert(response.statusText);
+  }
 }
 
 const submitBtn = document.querySelector('#submit-blog');
