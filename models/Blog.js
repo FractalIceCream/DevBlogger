@@ -33,7 +33,9 @@ Blog.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
+    createdAt: 'date_created',
+    updatedAt: 'date_created',
     freezeTableName: true,
     underscored: true,
     modelName: 'blog',

@@ -3,19 +3,18 @@ const { Blog, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-// router.get('/', withAuth, async (req, res) => {
-//     try {
-//         const blogs = await Blog.findAll({
-//             where: {
-//                 user_id: req.session.user_id
-//             }
-//         });
-
-//         res.render('dashboard', {blogs});
-//     } catch (error) {
-        
-//     }
-// })
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const comments = await Comment.findAll({
+          where: {
+            user_id: req.session.user_id
+          }
+        });
+        res.status(200).json(comments);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+})
 
 // router.get('/:id', withAuth, async (req, res) => {
 //     try {
