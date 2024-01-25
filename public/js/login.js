@@ -1,7 +1,11 @@
 const title = document.querySelector('.card-title');
 const signupLink = document.querySelector('#signup-link');
 const loginBtn = document.querySelector('#login-btn');
+
+//use to change button layout from login to signup
 let newUser = signupLink.getAttribute('data-newUser');
+
+//handles button swap
 const buttonSwapHandler = (event) => {
   event.preventDefault();
   if (newUser == 'true') {
@@ -19,6 +23,7 @@ const buttonSwapHandler = (event) => {
   }
 };
 
+//login or signup form
 const loginFormHandler = async (event) => {
   event.preventDefault();
   const name = document.querySelector('#userName-input').value.trim();
@@ -40,21 +45,21 @@ const loginFormHandler = async (event) => {
       } else {
         alert(response.statusText);
       }
+
+    } else {
+      console.log(`${name} ${password}`);
+      const newUserResponse = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ name, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      console.log(newUserResponse.body);
+      if (newUserResponse.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert(newUserResponse.statusText);
+      }
     }
-    // } else {
-    //   console.log(`${name} ${password}`);
-    //   const newUserResponse = await fetch('/api/users', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ name, password }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
-    //   console.log(newUserResponse.body);
-    //   if (newUserResponse.ok) {
-    //     document.location.replace('/dashboard');
-    //   } else {
-    //     alert(newUserResponse.statusText);
-    //   }
-    // }
   }
 };
 
