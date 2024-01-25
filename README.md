@@ -6,15 +6,14 @@ This application is a CMS-style blogger app where users can post and comment eac
 
 ## Table of Contents
   
-- [Installation](#installation)
+- [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
 - [Questions](#questions)
 
-## Installation
+## Usage
   
-1. npm i 
-2. npm run start
+[Live Heroku URL: https://whispering-peak-44380-76c2238a9bc5.herokuapp.com/](https://whispering-peak-44380-76c2238a9bc5.herokuapp.com/)
 
 <p align="right"><a href='#devblogger'>back to top</a></p>
 
