@@ -1,20 +1,7 @@
 const router = require('express').Router();
-const  {User, Blog, Comment}  = require('../../models');
+const { User } = require('../../models');
 
-router.get('/', async (req, res) => {
-  try {
-    // const userData = await User.findByPk(req.session.user_id, {
-    //   include: {Model: Blog}});
-
-    // const user = userData.map((user) => user.get({plain: true}));
-    // res.render('/dashboard', {user})
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-
+//create user
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -30,6 +17,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+//login user
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { name: req.body.name } });
@@ -62,6 +50,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+//logout user
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

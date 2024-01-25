@@ -23,35 +23,39 @@
         </h2>
         <div id="collapseBlog{{id}}" class="accordion-collapse collapse">
             <div class="accordion-body">
-                <div class="col-6 d-inline-flex"><div>Title:  <input class="form-control bg-white post-title" value="{{title}}"></input></div></div>
+                <div class="col-6 d-inline-flex">
+                    <div>Title: <input class="form-control bg-white post-title" value="{{title}}"></input></div>
+                </div>
                 <textarea class="form-control post-description">{{description}}</textarea>
                 <div class="col-6 d-inline-flex justify-content-between">
-                <button type="button" class="btn btn-primary update-blog" data-blogId="{{id}}">
-                    Update Post
-                </button>
-                <button type="button" class="btn btn-primary delete-blog" data-blogId="{{id}}">
-                    Delete
-                </button>    
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseComment{{id}}" aria-expanded="false">
-                    Comments
-                </button>
+                    <button type="button" class="btn btn-primary update-blog" data-blogId="{{id}}">
+                        Update Post
+                    </button>
+                    <button type="button" class="btn btn-primary delete-blog" data-blogId="{{id}}">
+                        Delete
+                    </button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseComment{{id}}" aria-expanded="false">
+                        Comments
+                    </button>
                 </div>
                 <ul class="list-group collapse" id="collapseComment{{id}}">
                     {{#each comments as |comment|}}
                     <li class="list-group-item position-relative p-3">
                         <div class="position-absolute top-0 start-0 ms-1">{{text}}</div>
-                        <div class="position-absoulte bottom-0 start-50 m-1">-{{user.name}}, {{format_date date_created}}
+                        <div class="position-absoulte bottom-0 start-50 m-1">-{{user.name}}, {{format_date
+                            date_created}}
                         </div>
                     </li>
                     {{/each}}
                 </ul>
-                
+
             </div>
         </div>
     </div>
 </div>
 {{/each}}
 
-<a href="#" id="new-blog-btn" class="btn btn-secondary text-bg-dark text-light mt-3" data-bs-toggle="collapse" data-bs-target="#postForm" aria-expanded="false">+ New Blog</a>
+<a href="#" id="new-blog-btn" class="btn btn-secondary text-bg-dark text-light mt-3" data-bs-toggle="collapse"
+    data-bs-target="#postForm" aria-expanded="false">+ New Blog</a>
 <script src="./js/dashboard.js"></script>

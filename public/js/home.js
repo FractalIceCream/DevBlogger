@@ -1,3 +1,5 @@
+
+//add new comment form
 const newCommentFormHandler = async (event) => {
     event.preventDefault();
     const inputEl = event.target.parentElement.children[1];
